@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "tupm";
+  src: url("../assets/fonts/TUPACMAGRATH.woff2") format("woff2"),
+    url("../assets/fonts/TUPACMAGRATH.woff") format("woff"),
+    url("../assets/fonts/tupacM.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

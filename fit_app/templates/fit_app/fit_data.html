@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Fit Data</title>
+</head>
+<body>
+<h1>Your Google Fit Data</h1>
+{% if data_sets %}
+{% for data_source in data_sets %}
+<h2>{{ data_source.data_type }}</h2>
+{% if data_source.data_points.all %}
+<ul>
+    {% for data_source in data_sets %}
+    <h2>DataSource: {{ data_source.name }}</h2>
+    <h3>Aggregated Data:</h3>
+    <ul>
+        {% for data in data_source.aggregated_data %}
+        <li>Date: {{ data.date_only }} - Total Value: {{ data.total_value }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No data available</p>
+{% endif %}
+{% endfor %}
+{% else %}
+<p>No data sets available</p>
+{% endif %}
+<a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

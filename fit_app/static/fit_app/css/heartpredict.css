@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #66cccb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.heart-disease-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    z-index: 3;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 150px;
+    z-index: 100;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.background-image {
+    position: absolute;
+    width: 480px;
+    height: 491px;
+    left: -191px;
+    top: 522.6px;
+    transform: rotate(-29.76deg);
+    z-index: 3;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-29.76deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-29.76deg);
+    }
+}
+
+.background-image2 {
+    position: absolute;
+    width: 380px;
+    height: 428.4px;
+    bottom: -100px;
+    right: -80px;
+    z-index: 3;
+    transform: rotate(-22.72deg);
+    animation: float3 5s ease-in-out infinite;
+}
+
+@keyframes float3 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-22.72deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-22.72deg);
+    }
+}
+
+.right-section {
+    width: 1000px;
+    height: 631px;
+    background: #ffffff;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+}
+
+.heart-disease-title {
+    font-family: "tupm", sans-serif;
+    font-size: 38px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+
+.heart-disease-form {
+    width: 83%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.form-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.heart-disease-form input,
+.heart-disease-form select {
+    padding: 15px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    outline: none;
+    flex: 1;
+    font-family: "Merriweather";
+    min-width: calc(25% - 20px);
+}
+
+.heart-disease-form input::placeholder,
+.heart-disease-form select::placeholder {
+    color: #a1a1a1;
+    font-family: "Merriweather";
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 16px;
+    font-family: "Merriweather";
+    background-color: #66cccb;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.submit-btn:hover {
+    background-color: #55b2b2;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 5; /* On top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 708px;
+    height: 250px;
+    background: #ffffff;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+.modal-title {
+    font-family: "tupm";
+    font-size: 32px;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.modal-content p, #prediction-result {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.save-btn {
+    border: none;
+    width: 105px;
+    height: 37px;
+    background: #66cccb;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Montserrat";
+    transition: all 0.2s linear;
+    color: #fff;
+    margin-left: 60px;
+}
+
+.save-btn:hover {
+    background: #e95951;
+    border: none;
+    color: #fff;
+}
+
+/* Tooltip Styles */
+.tooltip-text {
+    position: absolute;
+    background-color: #66cccb;
+    color: #fff;
+    font-family: "Montserrat";
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .heart-disease-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-section {
+        display: none;
+    }
+
+    .right-section {
+        width: 100%;
+        padding: 40px;
+        border-radius: 0;
+    }
+
+    .heart-disease-title {
+        font-size: 32px;
+    }
+
+    .heart-disease-form {
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .heart-rate-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heart-rate-categories,
+    .health-actions {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .health-actions {
+        display: none;
+    }
+
+    .background-image {
+        display: none;
+    }
+
+    .background-image2 {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .right-section {
+        padding: 30px;
+    }
+
+    .heart-disease-title {
+        font-size: 2rem;
+    }
+
+    .heart-disease-form input,
+    .heart-disease-form select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .right-section {
+        padding: 20px;
+    }
+
+    .heart-disease-title {
+        font-size: 1.8rem;
+    }
+
+    .heart-disease-form input,
+    .heart-disease-form select {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .submit-btn {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+        max-width: 708px;
+    }
+}

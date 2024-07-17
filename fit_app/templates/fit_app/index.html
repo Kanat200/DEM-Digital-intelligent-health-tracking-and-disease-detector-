@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dem</title>
+    {% load static %}
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'fit_app/css/styles.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/fonts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/owl.theme.default.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/materialdesignicons.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/aos.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/style.min.css' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'fit_app/assets/img/favicon.png' %}"/>
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+<div class="hamburger">
+    <i class="fas fa-bars"></i>
+</div>
+<header data-aos="fade-down" class="sidebar">
+    <div class="navbar">
+        <img src="{% static 'fit_app/assets/img/logo.png' %}" alt="Logo" class="logo"/>
+        <nav>
+            <ul class="nav-list">
+                {% if request.user %}
+                <div class="nav-els">
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Data Input &#9662;</a>
+                        <div class="dropdown-content">
+                            <a href="{% url 'bmi' %}">
+                                <i class="fa-solid fa-weight-scale"></i>
+                                <span class="dropdown-text">BMI Calculator</span>
+                            </a>
+                            <a href="{% url 'heartbeat' %}">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                <span class="dropdown-text">Heartbeat</span>
+                            </a>
+                            <a href="{% url 'heartpredict' %}">
+                                <i class="fa-solid fa-pills"></i>
+                                <span class="dropdown-text">Heart Disease Predictor</span>
+                            </a>
+                            <a href="{% url 'tracking' %}">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <span class="dropdown-text">Tracking system</span>
+                            </a>
+                        </div>
+                    </li>
+                </div>
+                {% endif %}
+                {% if not request.user %}
+                <div class="buttons-nv">
+                    <a href="{% url 'login' %}">
+                        <button class="login-btn">Sign in</button>
+                    </a>
+                    <a href="{% url 'signup' %}" class="signup">
+                        <button class="signup-btn">Sign up</button>
+                    </a>
+                </div>
+                {% else %}
+                <div class="buttons-nv">
+                    <a href="{% url 'logout' %}">
+                        <button class="login-btn">Logout</button>
+                    </a>
+                </div>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="left-wrap" data-aos="fade-right"></div>
+    <section class="hero" data-aos="fade-up">
+        <div class="hero-left">
+            <h1 class="hero-title">Take Control of Your Health!</h1>
+            <p class="hero-subtitle">
+                Our innovative app empowers you to monitor your health, identify
+                potential risks, and take proactive steps towards a healthier you.
+            </p>
+        </div>
+        <div class="threed-icons">
+            <img
+                    src="{% static 'fit_app/assets/img/plus.png' %}"
+                    alt="Plus Plus Graphic"
+                    class="plus-graphic-left"
+                    data-aos="fade-left"
+            />
+            <img
+                    src="{% static 'fit_app/assets/img/heart.png' %}"
+                    alt="Heart Health Graphic"
+                    class="heart-graphic"
+                    data-aos="zoom-in"
+            />
+            <img
+                    src="{% static 'fit_app/assets/img/plus.png' %}"
+                    alt="Plus Plus Graphic"
+                    class="plus-graphic-right"
+                    data-aos="fade-right"
+            />
+        </div>
+    </section>
+</main>
+
+<div class="content-wrapper" data-aos="fade-in">
+    <div class="container">
+        <section
+                class="features-overview"
+                id="features-section"
+                data-aos="fade-up"
+        >
+            <div class="content-header">
+                <h2>How does it work?</h2>
+                <h6 class="section-subtitle text-muted">
+                    Seamlessly integrate it into your daily life, providing you with
+                    effective health management solutions right at your fingertips.
+                </h6>
+            </div>
+            <div class="d-md-flex justify-content-between how">
+                <div
+                        class="grid-margin d-flex justify-content-start"
+                        data-aos="fade-right"
+                >
+                    <div class="features-width">
+                        <i class="fa-solid fa-calculator"></i>
+                        <h5 class="py-3">BMI<br/>Calculator</h5>
+                        <p class="text-muted">
+                            Use our BMI Calculator to quickly determine your Body Mass
+                            Index. Simply enter your height and weight to see if you're
+                            within a healthy weight range and receive immediate health
+                            guidance.
+                        </p>
+                        <a href="{% url 'bmi' %}"><p class="readmore-link">TRY</p></a>
+                    </div>
+                </div>
+                <div
+                        class="grid-margin d-flex justify-content-center"
+                        data-aos="fade-up"
+                >
+                    <div class="features-width">
+                        <i class="fa-solid fa-pills"></i>
+                        <h5 class="py-3">Heart Disease <br/>Predictor</h5>
+                        <p class="text-muted">
+                            Our Heart Disease Predictor uses machine learning to evaluate
+                            your risk based on factors like age and blood pressure.
+                            Receive personalized health insights and tips to enhance your
+                            heart health.
+                        </p>
+                        <a href="{% url 'heartbeat' %}"><p class="readmore-link">TRY</p></a>
+                    </div>
+                </div>
+                <div
+                        class="grid-margin d-flex justify-content-end"
+                        data-aos="fade-left"
+                >
+                    <div class="features-width">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h5 class="py-3">Heart Rate<br/>Feedback</h5>
+                        <p class="text-muted">
+                            Input your heart rate to get real-time feedback on your
+                            cardiac health. Our tool compares your heart rate against
+                            health standards to offer actionable advice for maintaining or
+                            improving your heart condition.
+                        </p>
+                        <a href="{% url 'heartpredict' %}"><p class="readmore-link">TRY</p></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+                class="digital-marketing-service"
+                id="digital-marketing-section"
+                data-aos="fade-up"
+        >
+            <div class="row align-items-center">
+                <div
+                        class="col-12 col-lg-7 grid-margin grid-margin-lg-0"
+                        data-aos="fade-right"
+                >
+                    <h3 class="m-0">Addressing Health Challenges</h3>
+                    <div class="col-lg-7 col-xl-6 p-0">
+                        <p class="py-4 m-0 text-muted">
+                            Today, many people face a variety of health challenges, and
+                            there is a significant lack of accessible web platforms
+                            dedicated to health and wellness.
+                        </p>
+                        <p class="font-weight-medium text-muted">
+                            Our goal is to bridge this gap by providing comprehensive
+                            digital tools that empower individuals to take control of
+                            their health. From tracking vital signs to predicting
+                            potential health risks, our platform is here to support your
+                            journey to better health.
+                        </p>
+                    </div>
+                </div>
+                <div
+                        class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0"
+                        data-aos="fade-left"
+                >
+                    <img
+                            src="{% static 'fit_app/assets/img/doctors.svg' %}"
+                            alt=""
+                            class="img-fluid doctor"
+                    />
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div
+                        class="col-12 col-lg-7 text-center flex-item grid-margin"
+                        data-aos="fade-right"
+                >
+                    <img
+                            src="{% static 'fit_app/assets/img/doctor.svg' %}"
+                            alt=""
+                            class="img-fluid doctor"
+                    />
+                </div>
+                <div
+                        class="col-12 col-lg-5 flex-item grid-margin"
+                        data-aos="fade-left"
+                >
+                    <h3 class="m-0">Steps to a Healthier Life</h3>
+                    <div class="col-lg-9 col-xl-8 p-0">
+                        <p class="py-4 m-0 text-muted">
+                            In a world with increasing health concerns, it is crucial to
+                            have reliable resources at your fingertips. Our platform
+                            offers a full suite of health monitoring tools designed to
+                            help you stay informed and proactive about your well-being.
+                        </p>
+                        <p class="pb-2 font-weight-medium text-muted">
+                            Regular health check-ups, balanced nutrition, and an active
+                            lifestyle are key steps towards preventing illness and
+                            maintaining overall health.
+                        </p>
+                    </div>
+                    <a
+                            href="https://www.healthline.com/nutrition/22-ways-to-get-healthy#TOC_TITLE_HDR_2"
+                    >
+                        <button class="btn btn-info rdmore">Read more</button>
+                    </a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <section
+                class="customer-feedback"
+                id="feedback-section"
+                data-aos="fade-up"
+        >
+            <div class="row">
+                <div class="col-12 text-center pb-5">
+                    <h2>Main developers</h2>
+                </div>
+                <div class="owl-carousel owl-theme grid-margin">
+                    <div class="card customer-cards" data-aos="fade-right">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img
+                                        src="{% static 'fit_app/assets/img/kanat.png' %}"
+                                        width="89"
+                                        height="89"
+                                        alt=""
+                                        class="img-customer"
+                                />
+                                <p class="m-0 py-3 text-muted"></p>
+                                <div class="content-divider m-auto"></div>
+                                <h6 class="card-title pt-3">Kanat Maratuly</h6>
+                                <h6 class="customer-designation text-muted m-0">
+                                    ML Developer
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card customer-cards" data-aos="fade-up">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img
+                                        src="{% static 'fit_app/assets/img/bekslan.jpeg' %}"
+                                        width="89"
+                                        height="89"
+                                        alt=""
+                                        class="img-customer"
+                                />
+                                <p class="m-0 py-3 text-muted"></p>
+                                <div class="content-divider m-auto"></div>
+                                <h6 class="card-title pt-3">Bekslan Yermekbayev</h6>
+                                <h6 class="customer-designation text-muted m-0">
+                                    Backend Developer
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card customer-cards" data-aos="fade-left">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img
+                                        src="{% static 'fit_app/assets/img/didar.jpg' %}"
+                                        width="89"
+                                        height="89"
+                                        alt=""
+                                        class="img-customer"
+                                />
+                                <p class="m-0 py-3 text-muted"></p>
+                                <div class="content-divider m-auto"></div>
+                                <h6 class="card-title pt-3">Didar Otesh</h6>
+                                <h6 class="customer-designation text-muted m-0">
+                                    Frontend developer
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-us" id="contact-section" data-aos="fade-up">
+            <div class="contact-us-bgimage grid-margin">
+                <div class="pb-4 cm">
+                    <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">
+                        Do you have any questions or suggestions?
+                    </h4>
+                </div>
+                <div data-aos="fade-up">
+                    <button class="btn btn-rounded btn-contact">Contact us</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<img
+        src="{% static 'fit_app/assets/img/caduceus.png' %}"
+        alt="Medical Graphic"
+        class="medical-graphic"
+        data-aos="fade-in"
+/>
+<footer class="footer">
+    <img src="{% static 'fit_app/assets/img/logo-white.png' %}" alt="" style="margin-bottom: 30px"/>
+    <ul class="social-icon">
+        <li class="social-icon__item">
+            <a class="social-icon__link" href="https://www.instagram.com/yrmkbyv_b/"
+            ><i class="fa-brands fa-facebook"></i
+            ></a>
+        </li>
+        <li class="social-icon__item">
+            <a class="social-icon__link" href="https://www.instagram.com/yrmkbyv_b/"
+            ><i class="fa-brands fa-twitter"></i
+            ></a>
+        </li>
+        <li class="social-icon__item">
+            <a class="social-icon__link" href="https://www.instagram.com/yrmkbyv_b/"
+            ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+        </li>
+        <li class="social-icon__item">
+            <a class="social-icon__link" href="https://www.instagram.com/yrmkbyv_b/"
+            ><i class="fa-brands fa-instagram"></i
+            ></a>
+        </li>
+    </ul>
+    <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">We</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Make</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">This</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">World</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Better</a></li>
+    </ul>
+    <p>&copy;2024 Dem | All Rights Reserved</p>
+</footer>
+
+<script src="{% static 'fit_app/js/jquery.min.js' %}"></script>
+<script src="{% static 'fit_app/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'fit_app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'fit_app/js/aos.js' %}"></script>
+<script src="{% static 'fit_app/js/landingpage.js' %}"></script>
+<script>
+  AOS.init();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const navList = document.querySelector(".nav-list");
+
+    hamburger.addEventListener("click", function () {
+      navList.classList.toggle("active");
+    });
+
+    // Close the navbar when clicking outside of it
+    window.addEventListener("click", function (event) {
+      if (
+        !navList.contains(event.target) &&
+        !hamburger.contains(event.target)
+      ) {
+        navList.classList.remove("active");
+      }
+    });
+  });
+</script>
+</body>
+</html>

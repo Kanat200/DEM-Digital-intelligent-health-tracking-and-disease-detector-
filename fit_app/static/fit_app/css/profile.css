@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #66cccb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    z-index: 3;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 150px;
+    z-index: 100;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.background-image {
+    position: absolute;
+    width: 480px;
+    height: 491px;
+    left: -191px;
+    top: 522.6px;
+    transform: rotate(-29.76deg);
+    z-index: 3;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-29.76deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-29.76deg);
+    }
+}
+
+.background-image2 {
+    position: absolute;
+    width: 380px;
+    height: 428.4px;
+    bottom: -100px;
+    right: -80px;
+    z-index: 3;
+    transform: rotate(-22.72deg);
+    animation: float3 5s ease-in-out infinite;
+}
+
+@keyframes float3 {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-22.72deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(-22.72deg);
+    }
+}
+
+.right-section {
+    width: 1000px;
+    height: 731px;
+    background: #ffffff;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 3;
+}
+
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab {
+    font-family: "Merriweather";
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    margin-right: 20px;
+    color: #a1a1a1;
+}
+
+.tab.active {
+    font-family: "tupm";
+    border-bottom: 2px solid #66cccb;
+    font-weight: bold;
+    color: #000;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.profile-photo {
+    display: flex;
+    align-items: center;
+    margin: 40px;
+}
+
+.profile-photo img {
+    margin-right: 20px;
+}
+
+.upload-btn {
+    background: #66cccb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.3s;
+    font-family: "Montserrat";
+}
+
+input[type="file"] {
+    display: none;
+}
+
+
+.reset-btn {
+    background: #e95951;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.3s;
+    font-family: "Montserrat";
+}
+
+.upload-btn:hover {
+    background: #55b2b2;
+}
+
+.reset-btn:hover {
+    opacity: 0.8;
+}
+
+.profile-form,
+.password-form {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.profile-form label,
+.password-form label,
+.section {
+    font-family: "Montserrat";
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.profile-form input,
+.password-form input {
+    padding: 15px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    outline: none;
+    width: 100%;
+    font-family: "Merriweather";
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.save-btn {
+    font-family: "Montserrat";
+    background: #66cccb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.save-btn:hover {
+    background: #55b2b2;
+}
+
+.cancel-btn {
+    font-family: "Montserrat";
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .background-image {
+        display: none;
+    }
+
+    .background-image2 {
+        display: none;
+    }
+
+    .profile-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-section {
+        display: none;
+    }
+
+    .right-section {
+        width: 100%;
+        padding: 40px;
+        border-radius: 0;
+    }
+
+    .tabs {
+        justify-content: center;
+    }
+
+    .tab {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .profile-photo {
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .profile-form,
+    .password-form {
+        margin: 20px;
+    }
+
+    .profile-form input,
+    .password-form input {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .right-section {
+        padding: 30px;
+    }
+
+    .tab {
+        font-size: 14px;
+    }
+
+    .profile-photo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-photo img {
+        margin: 0 0 10px 0;
+    }
+
+    .upload-btn,
+    .reset-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-form,
+    .password-form {
+        margin: 10px;
+    }
+
+    .profile-form input,
+    .password-form input {
+        font-size: 12px;
+        padding: 8px 0;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        font-size: 12px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .right-section {
+        padding: 20px;
+    }
+
+    .tab {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .profile-form input,
+    .password-form input {
+        font-size: 10px;
+        padding: 6px 0;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+}
+
+
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Merriweather";
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.history-table th {
+  background-color: #f2f2f2;
+}
+
+.history-table tr:hover {
+  background-color: #eaeaea;
+}
+
+.state.good {
+  color: #4caf50;
+  cursor: pointer;
+}
+
+.state.bad {
+  color: #e95951;
+  cursor: pointer;
+}

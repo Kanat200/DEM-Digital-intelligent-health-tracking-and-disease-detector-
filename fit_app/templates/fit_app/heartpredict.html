@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dem - Heart Disease Prediction</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fit_app/css/fonts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/heartpredict.css' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'fit_app/assets/img/favicon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/aos.css' %}"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+<a href="{% url 'index' %}" class="logo">
+    <img src="{% static 'fit_app/assets/img/logo-white.png' %}" alt="Logo"/>
+</a>
+<div
+        class="heart-disease-container"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+>
+    <div class="left-section"></div>
+    <div class="right-section">
+        <h1 class="heart-disease-title">Enter Your Information</h1>
+        <form
+                class="heart-disease-form"
+                novalidate
+        >
+            <div class="form-row">
+                {% csrf_token %}
+
+                <input
+                        value="1"
+                        type="text"
+                        name="bmi"
+                        placeholder="BMI"
+                        class="tooltip"
+                        data-tooltip="Enter your Body Mass Index (BMI). BMI is a measure of body fat based on height and weight."
+                        required
+                />
+                <input
+                        value="1"
+                        type="text"
+                        name="physical_health"
+                        placeholder="Physical Health"
+                        class="tooltip"
+                        data-tooltip="Enter the number of days you felt physically unhealthy in the past 30 days."
+                        required
+                />
+                <select
+                        name="age_category"
+                        class="tooltip"
+                        data-tooltip="Select your age category from the dropdown list."
+                        required
+                >
+                    <option value="">Age Category</option>
+                    <option value="0">18-24</option>
+                    <option value="1">25-29</option>
+                    <option value="2">30-34</option>
+                    <option value="3">35-39</option>
+                    <option value="4">40-44</option>
+                    <option value="5">45-49</option>
+                    <option value="6">50-54</option>
+                    <option value="7">55-59</option>
+                    <option value="8">60-64</option>
+                    <option value="9">65-69</option>
+                    <option value="10">70-74</option>
+                    <option selected value="11">75-79</option>
+                    <option value="12">80 or older</option>
+                </select>
+                <input
+                        value="1"
+                        type="text"
+                        name="sleep_time"
+                        placeholder="Sleep Time (hours)"
+                        class="tooltip"
+                        data-tooltip="Enter the average number of hours you sleep per day."
+                        required
+                />
+            </div>
+            <div class="form-row">
+                <select
+                        name="smoking"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you are a smoker. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Smoking</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <input
+                        value="2"
+                        type="text"
+                        name="mental_health"
+                        placeholder="Mental Health"
+                        class="tooltip"
+                        data-tooltip="Enter the number of days you felt mentally unhealthy in the past 30 days."
+                        required
+                />
+                <select
+                        name="diabetic"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have been diagnosed with diabetes. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Diabetic</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <select
+                        name="asthma"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have been diagnosed with asthma. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Asthma</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <select
+                        name="alcohol_drinking"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you consume alcohol. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Alcohol Drinking</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <select
+                        name="diff_walking"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have difficulty walking or climbing stairs. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Diff Walking</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <select
+                        name="physical_activity"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you engage in regular physical activity. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Physical Activity</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <select
+                        name="kidney_disease"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have been diagnosed with kidney disease. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Kidney Disease</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <select
+                        name="stroke"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have ever had a stroke. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Stroke</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+                <select
+                        name="sex"
+                        class="tooltip"
+                        data-tooltip="Select your gender from the dropdown list."
+                        required
+                >
+                    <option value="">Sex</option>
+                    <option selected value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+                <select
+                        name="gen_health"
+                        class="tooltip"
+                        data-tooltip="Select your general health condition from the dropdown list."
+                        required
+                >
+                    <option value="">Gen Health</option>
+                    <option selected value="0">Poor</option>
+                    <option value="1">Fair</option>
+                    <option value="2">Good</option>
+                    <option value="3">Very good</option>
+                    <option value="4">Excellent</option>
+                </select>
+                <select
+                        name="skin_cancer"
+                        class="tooltip"
+                        data-tooltip="Indicate whether you have been diagnosed with skin cancer. Select 'Yes' or 'No'."
+                        required
+                >
+                    <option value="">Skin Cancer</option>
+                    <option selected value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+<img
+        src="{% static 'fit_app/assets/img/heart.png' %}"
+        alt="Decorative Hearts"
+        class="background-image"
+/>
+<img
+        src="{% static 'fit_app/assets/img/plus.png' %}"
+        alt="Medical plus"
+        class="background-image2"
+/>
+
+<!-- Modal Window -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h1 class="modal-title">Heart Disease Prediction</h1>
+        <div style="padding-left: 4rem">
+            <label style="font-size: 2rem" id="prediction-result"></label>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'fit_app/js/heartpredict.js' %}"></script>
+<script src="{% static 'fit_app/js/jquery.min.js' %}"></script>
+<script src="{% static 'fit_app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'fit_app/js/landingpage.js' %}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".heart-disease-form");
+    const modal = document.getElementById("modal");
+    const result = document.getElementById("prediction-result");
+
+    // Hide modal on page load
+    modal.style.display = "none";
+
+    form.addEventListener("submit", function (event) {
+      let valid = true;
+      let data = {};
+      form.querySelectorAll("input, select").forEach((input) => {
+        if (!input.value) {
+          valid = false;
+          input.setCustomValidity("Please fill out this field.");
+          input.reportValidity();
+        } else {
+          data[input.name] = input.value;
+          input.setCustomValidity("");
+        }
+      });
+      console.log(data);
+      if (valid) {
+        event.preventDefault();
+        $.ajax({
+          url: '/heartpredict/',         /* Куда отправить запрос */
+          method: 'post',             /* Метод запроса (post или get) */
+          dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
+          data: data,     /* Данные передаваемые в массиве */
+          success: function (data) {   /* функция которая будет выполнена после успешного запроса.  */
+            console.log(data); /* В переменной data содержится ответ от index.php. */
+            displayModal(data);
+          }
+        });
+
+      } else {
+        event.preventDefault();
+      }
+    });
+
+    function displayModal(data) {
+      result.innerText = data?.risk_percentage + "%";
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    document.querySelector(".close").addEventListener("click", closeModal);
+    document
+      .querySelector(".save-btn")
+      .addEventListener("click", function () {
+        alert("Your heart disease prediction data has been saved.");
+        closeModal();
+      });
+  });
+</script>
+</body>
+</html>

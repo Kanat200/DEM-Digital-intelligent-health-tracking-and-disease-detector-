@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dem - Tracking</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fit_app/css/fonts.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/tracking.css' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'fit_app/assets/img/favicon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/aos.css' %}"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+<a href="{% url 'index' %}" class="logo">
+    <img src="{% static 'fit_app/assets/img/logo-white.png' %}" alt="Logo"/>
+</a>
+<div class="tracking-container" data-aos="fade-up" data-aos-duration="1000">
+    <div class="left-section"></div>
+    <div class="right-section">
+        <h1 class="tracking-title">Patient Tracking Details</h1>
+        <table class="tracking-table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Heart Disease Prediction (%)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in predict_items %}
+            <tr>
+                <td>{{item.created_at}}</td>
+                <td>{{item.value}}%</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h1 class="tracking-title" style="margin-bottom: 0 !important; margin-top: 2rem !important;">Google fit</h1>
+        <div id="google-fit-section">
+            {% for item, values in fit_items.items %}
+            <div class="fit-item mb-4">
+                <h3>{{ item }}</h3>
+                <table class="history-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Patient State</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entry in values %}
+                    <tr>
+                        <td>{{ entry.date }}</td>
+                        <td>{{ entry.value }}</td>
+                        <td class="state {{ entry.state }}">{{ entry.state }}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<img
+        src="{% static 'fit_app/assets/img/heart.png' %}"
+        alt="Decorative Hearts"
+        class="background-image"
+/>
+<img
+        src="{% static 'fit_app/assets/img/plus.png' %}"
+        alt="Medical plus"
+        class="background-image2"
+/>
+
+<!-- Modal Window -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h1 class="modal-title">Patient State Details</h1>
+        <form id="state-form">
+            <label for="state-input">State:</label>
+            <input type="text" id="state-input" name="state"/>
+            <label for="advice">Advice:</label>
+            <textarea id="advice" name="advice" rows="5"></textarea>
+            <button type="submit" class="save-btn">Save</button>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'fit_app/js/tracking.js' %}"></script>
+<script src="{% static 'fit_app/js/jquery.min.js' %}"></script>
+<script src="{% static 'fit_app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'fit_app/js/landingpage.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create Account - Health Monitoring</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fit_app/css/login.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fit_app/css/fonts.css' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'fit_app/assets/img/favicon.png' %}"/>
+</head>
+<body>
+<div class="login-container">
+    <div class="left-section">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'fit_app/assets/img/logo-white.png' %}" alt="Logo" class="logo"/>
+        </a>
+        <img
+                src="{% static 'fit_app/assets/img/left-heart.png' %}"
+                alt="Decorative Hearts"
+                class="background-image"
+        />
+    </div>
+    <div class="right-section">
+        <h1 class="login-btn">Login</h1>
+        <div class="social-buttons">
+            <!--          <button class="social-btn google">-->
+            <!--            <img src="{% static 'fit_app/assets/img/ggl.png' %}" class="google-img" alt="" />Continue-->
+            <!--            with Google-->
+            <!--          </button>-->
+            <a class="social-btn google-fit" href="{% url 'authorize' %}">
+                <img src="{% static 'fit_app/assets/img/gglf.png' %}" class="google-img" alt=""/>
+                Continue with Google Fit
+            </a>
+        </div>
+        <div class="divider">- OR -</div>
+
+        <!--LOGIN FORM-->
+        <form class="login-form" action="/login/" method="POST">
+            {% csrf_token %}
+
+            <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+            />
+            <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+            />
+            <button type="submit" class="enter-btn">Enter</button>
+        </form>
+        <!--LOGIN FORM-->
+        <p class="signup-link">
+            Don't have an account? <a href="{% url 'signup' %}">Register</a>
+        </p>
+        <p class="signup-link" style="color: orangered">
+            {{ error }}
+        </p>
+    </div>
+</div>
+</body>
+</html>
