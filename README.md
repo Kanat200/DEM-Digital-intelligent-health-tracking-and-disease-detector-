@@ -5,11 +5,12 @@ In today's globalized, tech-driven world, the rapid spread of diseases is a majo
 
 Screenshots
 ![mainPage](https://github.com/user-attachments/assets/1200394e-8c1b-432a-b764-0066a555f090)
-
+Figure 1: Main Page
 ![Снимок экрана 2024-07-17 201220](https://github.com/user-attachments/assets/0c355597-90a3-45e2-9f36-335dab1edf30)
-
+Figure 1: Login Page
 ![Снимок экрана 2024-07-17 201308](https://github.com/user-attachments/assets/94413a14-ebc2-46aa-8f3a-8ff8758ef632)
-
+Figure 1: Profile Page
 ![Снимок экрана 2024-07-17 201530](https://github.com/user-attachments/assets/040efa10-324f-4aa3-b641-d953e6cfda9b)
-
+Figure 1: BMI Page
 ![Снимок экрана 2024-07-17 201602](https://github.com/user-attachments/assets/57955076-dba2-457a-8f6e-bcf4c8b8d25a)
+Figure 1: ML Page
