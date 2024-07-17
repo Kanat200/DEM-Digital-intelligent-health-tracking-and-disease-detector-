@@ -4,5 +4,4 @@ Our project is a Python website with Google Fit integration for health tracking.
 In today's globalized, tech-driven world, the rapid spread of diseases is a major concern. Healthcare professionals face challenges in using technology to prevent and treat illnesses. Maintaining a balanced lifestyle is difficult, especially regarding heart health and monitoring well-being. Digital health monitoring systems can effectively address these issues. As internet usage rises, "digital health" is becoming increasingly popular.
 
 Screenshots
-![Uploading Снимок экрана 2024-07-17 201220.png…]()
-
+![Снимок экрана 2024-07-17 201220](https://github.com/user-attachments/assets/0c355597-90a3-45e2-9f36-335dab1edf30)
